@@ -1,0 +1,290 @@
+@using System
+@using System.Collections.Generic
+@inherits ToSic.Sxc.Dnn.RazorComponent
+
+@{
+    string table = "Table1";
+    List<string[]> list = new List<string[]>() {
+        new string[] { "FETCH_GET_CONTENT", "Fetch Get Content " + table },
+        new string[] { "FETCH_POST_CONTENT", "Fetch Post Content " + table },
+        new string[] { "FETCH_DELETE_CONTENT", "Fetch Delete Content " + table },
+        new string[] { "FETCH_ERROR_CONTENT", "Fetch Error Content " + table },
+
+        new string[] { "AXIOS_GET_CONTENT", "Axios Get Content " + table },
+        new string[] { "AXIOS_POST_CONTENT", "Axios Post Content " + table },
+        new string[] { "AXIOS_DELETE_CONTENT", "Axios Delete Content " + table },
+        new string[] { "AXIOS_ERROR_CONTENT", "Axios Error Content " + table },
+
+        new string[] { "JQUERY_GET_CONTENT", "JQuery Get Content " + table },
+        new string[] { "JQUERY_POST_CONTENT", "JQuery Post Content " + table },
+        new string[] { "JQUERY_DELETE_CONTENT", "JQuery Delete Content " + table },
+        new string[] { "JQUERY_ERROR_CONTENT", "JQuery Error Content " + table },
+
+        new string[] { "SUPERAGENT_GET_CONTENT", "SuperAgent Get Content " + table },
+        new string[] { "SUPERAGENT_POST_CONTENT", "SuperAgent Post Content " + table },
+        new string[] { "SUPERAGENT_DELETE_CONTENT", "SuperAgent Delete Content " + table },
+        new string[] { "SUPERAGENT_ERROR_CONTENT", "SuperAgent Error Content " + table },
+
+        new string[] { "XHR_GET_CONTENT", "XHR Get Content " + table },
+        new string[] { "XHR_POST_CONTENT", "XHR Post Content " + table },
+        new string[] { "XHR_DELETE_CONTENT", "XHR Delete Content " + table },
+        new string[] { "XHR_ERROR_CONTENT", "XHR Error Content " + table },
+    };
+}
+
+<hr />
+
+@foreach (string[] item in list.ToArray())
+{
+    <button type="button" onclick="httpTest(this, '@item[0]')">@item[1]</button><br /><br />
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.22.0/axios.min.js"
+    integrity="sha512-m2ssMAtdCEYGWXQ8hXVG4Q39uKYtbfaJL5QMTbhl2kc6vYyubrKHhr6aLLXW4ITeXSywQLn1AhsAaqrJl8Acfg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/4.1.0/superagent.min.js"
+    integrity="sha512-LJaxxgpiq7SihGQ21nejROsll6FRrgbs0Wxtgqb5x+Q0CJICA3vt8hlBxSD8NLsO+Yabgg3B7ARexiijKiojGg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    function httpTest(context, action) {
+        const table = '@table';
+        const controller = $2sxc(context);
+        const headers = controller.webApi2.headers();
+        const contentUrl = controller.webApi2.url(`app/auto/content/${table}`);
+        const reqData = {
+            FirstName: 'FirstName',
+            LastName: 'LastName',
+        };
+        /*
+            fetch has no interceptors
+            axios has interceptors, but they are global which is not practical: https://axios-http.com/docs/interceptors
+            and has transformRequest, but can't change url and only available on some request types: https://axios-http.com/docs/req_config
+            jquery has beforeSend: https://api.jquery.com/jquery.ajax/
+            xhr has readyStateChange event:
+            https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange
+            https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+            superagent has poorly documented .use: https://github.com/visionmedia/superagent/issues/907
+        */
+
+        switch (action) {
+            /* FETCH */
+            case 'FETCH_GET_CONTENT':
+                fetch(contentUrl, {
+                    headers: {
+                        ...headers,
+                        'Accept': 'application/json',
+                    },
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(action, data));
+                break;
+            case 'FETCH_POST_CONTENT':
+                fetch(contentUrl, {
+                    headers: {
+                        ...headers,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    method: 'POST',
+                    body: JSON.stringify(reqData),
+                })
+                    .then(response => response.json())
+                    .then(data => console.log(action, data));
+                break;
+            case 'FETCH_DELETE_CONTENT':
+                fetch(contentUrl, {
+                    headers: {
+                        ...headers,
+                        'Accept': 'application/json',
+                    },
+                    method: 'GET',
+                })
+                    .then(response => response.json())
+                    .then(data =>
+                        fetch(`${contentUrl}?id=${data[data.length - 1].Id}`, {
+                            headers,
+                            method: 'DELETE',
+                        }),
+                    )
+                    .then(() => console.log(action));
+                break;
+            case 'FETCH_ERROR_CONTENT':
+                fetch(`${contentUrl}?id=undefined`, {
+                    headers,
+                    method: 'DELETE',
+                })
+                    .then(() => console.log(action));
+                break;
+
+            /* AXIOS */
+            case 'AXIOS_GET_CONTENT':
+                axios.get(contentUrl, {
+                    headers,
+                })
+                    .then(response => console.log(action, response));
+                break;
+            case 'AXIOS_POST_CONTENT':
+                axios.post(
+                    contentUrl,
+                    reqData,
+                    {
+                        headers,
+                    }
+                )
+                    .then(response => console.log(action, response));
+                break;
+            case 'AXIOS_DELETE_CONTENT':
+                axios.get(contentUrl, {
+                    headers,
+                })
+                    .then(response =>
+                        axios.delete(`${contentUrl}?id=${response.data[response.data.length - 1].Id}`, {
+                            headers,
+                        }),
+                    )
+                    .then(() => console.log(action));
+                break;
+            case 'AXIOS_ERROR_CONTENT':
+                axios.delete(`${contentUrl}?id=undefined`, {
+                    headers,
+                })
+                    .then(() => console.log(action));
+                break;
+
+            /* JQUERY */
+            case 'JQUERY_GET_CONTENT':
+                $.ajax(contentUrl, {
+                    headers,
+                    dataType: 'json',
+                })
+                    .then(data => console.log(action, data));
+                break;
+            case 'JQUERY_POST_CONTENT':
+                $.ajax(contentUrl, {
+                    headers,
+                    method: 'POST',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: JSON.stringify(reqData),
+                })
+                    .then(data => console.log(action, data));
+                break;
+            case 'JQUERY_DELETE_CONTENT':
+                $.ajax(contentUrl, {
+                    headers,
+                    dataType: 'json',
+                })
+                    .then(data =>
+                        $.ajax(`${contentUrl}?id=${data[data.length - 1].Id}`, {
+                            headers,
+                            method: 'DELETE',
+                        }),
+                    )
+                    .then(() => console.log(action));
+                break;
+            case 'JQUERY_ERROR_CONTENT':
+                $.ajax(`${contentUrl}?id=undefined`, {
+                    headers,
+                    method: 'DELETE',
+                })
+                    .then(() => console.log(action));
+                break;
+
+            /* SUPERAGENT */
+            case 'SUPERAGENT_GET_CONTENT':
+                superagent
+                    .get(contentUrl)
+                    .set(headers)
+                    .set('Accept', 'application/json')
+                    .then(response => console.log(action, response));
+                break;
+            case 'SUPERAGENT_POST_CONTENT':
+                superagent
+                    .post(contentUrl)
+                    .set(headers)
+                    .set('Accept', 'application/json')
+                    .send(reqData)
+                    .then(response => console.log(action, response));
+                break;
+            case 'SUPERAGENT_DELETE_CONTENT':
+                superagent
+                    .get(contentUrl)
+                    .set(headers)
+                    .set('Accept', 'application/json')
+                    .then(
+                        response => superagent
+                            .delete(`${contentUrl}?id=${response.body[response.body.length - 1].Id}`)
+                            .set(headers)
+                    )
+                    .then(() => console.log(action));
+                break;
+            case 'SUPERAGENT_ERROR_CONTENT':
+                superagent
+                    .delete(`${contentUrl}?id=undefined`)
+                    .set(headers)
+                    .then(() => console.log(action));
+                break;
+
+            /* XHR */
+            case 'XHR_GET_CONTENT':
+                const xhrGet = new XMLHttpRequest();
+                xhrGet.onreadystatechange = event => {
+                    if (xhrGet.readyState === XMLHttpRequest.DONE) {
+                        console.log(action, JSON.parse(xhrGet.responseText));
+                    }
+                }
+                xhrGet.open('GET', contentUrl);
+                Object.entries(headers).forEach(entry => xhrGet.setRequestHeader(entry[0], entry[1]));
+                xhrGet.setRequestHeader('Accept', 'application/json');
+                xhrGet.send();
+                break;
+            case 'XHR_POST_CONTENT':
+                const xhrPost = new XMLHttpRequest();
+                xhrPost.onreadystatechange = event => {
+                    if (xhrPost.readyState === XMLHttpRequest.DONE) {
+                        console.log(action, JSON.parse(xhrPost.responseText));
+                    }
+                }
+                xhrPost.open('POST', contentUrl);
+                Object.entries(headers).forEach(entry => xhrPost.setRequestHeader(entry[0], entry[1]));
+                xhrPost.setRequestHeader('Accept', 'application/json');
+                xhrPost.setRequestHeader('Content-Type', 'application/json');
+                xhrPost.send(JSON.stringify(reqData));
+                break;
+            case 'XHR_DELETE_CONTENT':
+                const xhrGetForDelete = new XMLHttpRequest();
+                xhrGetForDelete.onreadystatechange = event => {
+                    if (xhrGetForDelete.readyState === XMLHttpRequest.DONE) {
+                        const data = JSON.parse(xhrGetForDelete.responseText);
+                        const xhrDelete = new XMLHttpRequest();
+                        xhrDelete.onreadystatechange = event => {
+                            if (xhrDelete.readyState === XMLHttpRequest.DONE) {
+                                console.log(action);
+                            }
+                        }
+                        xhrDelete.open('DELETE', `${contentUrl}?id=${data[data.length - 1].Id}`);
+                        Object.entries(headers).forEach(entry => xhrDelete.setRequestHeader(entry[0], entry[1]));
+                        xhrDelete.send();
+                    }
+                }
+                xhrGetForDelete.open('GET', contentUrl);
+                Object.entries(headers).forEach(entry => xhrGetForDelete.setRequestHeader(entry[0], entry[1]));
+                xhrGetForDelete.setRequestHeader('Accept', 'application/json');
+                xhrGetForDelete.send();
+                break;
+            case 'XHR_ERROR_CONTENT':
+                const xhrError = new XMLHttpRequest();
+                xhrError.onreadystatechange = event => {
+                    if (xhrError.readyState === XMLHttpRequest.DONE) {
+                        console.log(action);
+                    }
+                }
+                xhrError.open('DELETE', `${contentUrl}?id=undefined`);
+                Object.entries(headers).forEach(entry => xhrError.setRequestHeader(entry[0], entry[1]));
+                xhrError.send();
+                break;
+        }
+    }
+</script>

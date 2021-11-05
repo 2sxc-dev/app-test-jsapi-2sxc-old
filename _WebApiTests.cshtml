@@ -1,0 +1,152 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@{
+    string table = "Table1";
+    string query = "Query1";
+    string api = "Api1/Hello";
+    string portalName = "no-language";
+    string portalApp = "FormSaveToAnotherPortal";
+    string portalTable = "Table";
+}
+<hr />
+
+<button type="button" onclick="webApiTest(this, 'GET_CONTENT')">Get Content @table</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'POST_CONTENT')">Post Content @table</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'DELETE_CONTENT')">Delete Content @table</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'ERROR_CONTENT')">Error Content @table</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'GET_QUERY')">Get Query @query</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'GET_API')">Get Api @api</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'GET_PORTAL_CONTENT')">Get from another portal (@portalName > @portalApp > @portalTable)</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'POST_PORTAL_CONTENT')">Post to another portal (@portalName > @portalApp > @portalTable)</button>
+<br /><br />
+<button type="button" onclick="webApiTest(this, 'DELETE_PORTAL_CONTENT')">Delete from another portal (@portalName > @portalApp > @portalTable)</button>
+<br /><br />
+
+<script>
+    function webApiTest(context, action) {
+        const controller = $2sxc(context);
+        const table = '@table';
+        const query = '@query';
+        const api = '@api';
+        const contentUrl = `app/auto/content/${table}`;
+        const queryUrl = `app/auto/query/${query}`;
+        const apiUrl = `app/auto/api/${api}`;
+        /*
+            Docs:
+            https://docs.2sxc.org/web-api/specs/url-schema.html
+            https://docs.2sxc.org/js-code/2sxc-api/sxc.webapi.html
+            
+            Schema:
+            [portal-root-with-language]/desktopmodules/2sxc/api/app/[app-name]/content/[content-type]
+            
+            Working examples:
+            http://petar-pc2.sistemi.corp/en-us/desktopmodules/2sxc/api/app/App Dev Testing Edit UI/content/PetarTest
+            http://petar-pc2.sistemi.corp/no-language/desktopmodules/2sxc/api/app/FormSaveToAnotherPortal/content/Table
+        */
+        const portalName = '@portalName';
+        const portalApp = '@portalApp';
+        const portalTable = '@portalTable';
+        const portalContentUrl = `${location.origin}/${portalName}/desktopmodules/2sxc/api/app/${portalApp}/content/${portalTable}`;
+
+        switch (action) {
+            case 'GET_CONTENT':
+                Promise.all([
+                    controller.webApi.get(contentUrl),
+                    controller.webApi2.get(contentUrl),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'POST_CONTENT':
+                Promise.all([
+                    controller.webApi.post(contentUrl, {}, { FirstName: 'JQuery First', LastName: 'JQuery Last' }),
+                    controller.webApi2.post(contentUrl, {}, { FirstName: 'Fetch First', LastName: 'Fetch Last' }),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'DELETE_CONTENT':
+                Promise.all([
+                    controller.webApi.get(contentUrl),
+                    controller.webApi2.get(contentUrl),
+                ]).then(([results, results2]) => {
+                    const last1 = results[results.length - 1].Id;
+                    const last2 = results[results.length - 2].Id;
+                    if (last1 == null || last2 == null) {
+                        throw new Error('You have to create some items first as table is empty');
+                    }
+                    return Promise.all([
+                        controller.webApi.delete(contentUrl, { id: last1 }, {}),
+                        controller.webApi2.delete(contentUrl, { id: last2 }, {}),
+                    ]);
+                }).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'ERROR_CONTENT':
+                Promise.all([
+                    controller.webApi.delete(contentUrl, { id: 10000 }, {}),
+                    controller.webApi2.delete(contentUrl, { id: 10000 }, {}),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'GET_QUERY':
+                Promise.all([
+                    controller.webApi.get(queryUrl),
+                    controller.webApi2.get(queryUrl),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'GET_API':
+                Promise.all([
+                    controller.webApi.get(apiUrl),
+                    controller.webApi2.get(apiUrl),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'GET_PORTAL_CONTENT':
+                Promise.all([
+                    controller.webApi.get(portalContentUrl),
+                    controller.webApi2.get(portalContentUrl),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'POST_PORTAL_CONTENT':
+                Promise.all([
+                    controller.webApi.post(portalContentUrl, {}, { StringField: 'Test JQuery' }, true),
+                    controller.webApi2.post(portalContentUrl, {}, { StringField: 'Test Fetch' }, true),
+                ]).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+            case 'DELETE_PORTAL_CONTENT':
+                Promise.all([
+                    controller.webApi.get(portalContentUrl),
+                    controller.webApi2.get(portalContentUrl),
+                ]).then(([results, results2]) => {
+                    const last1 = results[results.length - 1].Id;
+                    const last2 = results[results.length - 2].Id;
+                    if (last1 == null || last2 == null) {
+                        throw new Error('You have to create some items first as table is empty');
+                    }
+                    return Promise.all([
+                        controller.webApi.delete(portalContentUrl, { id: last1 }, {}),
+                        controller.webApi2.delete(portalContentUrl, { id: last2 }, {}),
+                    ]);
+                }).then(([results, results2]) => {
+                    console.log(action, '\nJQuery:', results, '\nFetch', results2);
+                });
+                break;
+        }
+    }
+</script>

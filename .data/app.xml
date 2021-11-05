@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.08.01" ExportDate="2021-11-05T07:43:26.4349572+01:00">
+  <Header>
+    <App Guid="463a3b1c-25a5-4377-bda8-a5bf52fde8e3" />
+    <Language Default="en-us" />
+    <Dimensions />
+  </Header>
+  <AttributeSets>
+    <AttributeSet StaticName="App-Resources" Name="App-Resources" Description="Stores resources like translations for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
+      <Attributes />
+    </AttributeSet>
+    <AttributeSet StaticName="App-Settings" Name="App-Settings" Description="Stores settings for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
+      <Attributes />
+    </AttributeSet>
+    <AttributeSet StaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" Name="Table1" Description="" Scope="2SexyContent" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="FirstName" Type="String" IsTitle="true">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="439f3d29-886d-4735-b91d-4d310d92983e" Json="True" KeyNumber="25998">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="FirstName" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="LastName" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c131e3f3-2935-44b7-b4a9-3fecc52c6cb9" Json="True" KeyNumber="25999">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="LastName" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
+  </AttributeSets>
+  <Entities>
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="874fb4b6-cf3b-475e-b028-c8bc74dee79c" Json="True" KeyNumber="1411">
+      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
+      <Value Key="AllowTokenTemplates" Value="True" Type="Boolean" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="DisplayName" Value="WebApiTests" Type="String" />
+      <Value Key="Folder" Value="WebApiTests" Type="String" />
+      <Value Key="Hidden" Value="False" Type="Boolean" />
+      <Value Key="OriginalId" Value="" Type="String" />
+      <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
+      <Value Key="RequiredOqtaneVersion" Value="" Type="String" />
+      <Value Key="RequiredVersion" Value="08.03.00" Type="String" />
+      <Value Key="SupportsAjaxReload" Value="False" Type="Boolean" />
+      <Value Key="Version" Value="01.00.00" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="776b693b-8672-431d-871c-d2e17fd6cdf4" KeyNumber="1411" />
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="3c36216b-599a-4084-b7b3-e3d18ff25993" KeyNumber="1411" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="53efc04b-2938-4dbc-ae0c-3438cbe595de">
+      <Value Key="FirstName" Value="John" Type="String" />
+      <Value Key="LastName" Value="Doe" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="9b9be1e0-0694-4386-a985-b9538dab363d" Json="True">
+      <Value Key="ContentTypeStaticName" Value="" Type="String" />
+      <Value Key="Icon" Value="" Type="Hyperlink" />
+      <Value Key="Identifier" Value="" Type="String" />
+      <Value Key="IsHidden" Value="False" Type="Boolean" />
+      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="Location" Value="Site" Type="String" />
+      <Value Key="Name" Value="Template" Type="String" />
+      <Value Key="Path" Value="_WebApiTests.cshtml" Type="String" />
+      <Value Key="PresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="PublishData" Value="False" Type="Boolean" />
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean" />
+      <Value Key="SearchIndexingStreams" Value="" Type="String" />
+      <Value Key="StreamsToPublish" Value="" Type="String" />
+      <Value Key="Type" Value="C# Razor" Type="String" />
+      <Value Key="UseForList" Value="False" Type="Boolean" />
+      <Value Key="ViewController" Value="" Type="String" />
+      <Value Key="ViewNameInUrl" Value="" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="7848a34b-1518-4af2-8d03-67584718ea54" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="732489a7-1a71-4feb-8b52-34a97aa225b2" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="5b0e0b33-6d38-4074-ae5b-3cbf2a26c72c" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="3aef2402-15f6-451f-8cde-9a58d6c7dbbb" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="365e4ad7-11c3-4c91-9a70-99e6cc3b646c" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="feea4d7e-1080-4d83-a9cc-5ae72bda2e2f" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="9df1df43-276c-4f05-b1bc-a033358a330f" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="c7343501-847b-4fc4-b34d-ce8c1f6b3d62" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="c58560ff-35ee-42eb-9940-b01e74a4912d" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="6fe8081c-052e-4363-a4ce-d8073b05870c" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="f30f9a28-00db-40af-80a7-1c9605cf8bac" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="ed7f2b1a-db79-442a-afe4-fd07edce9bd2" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="66f4a20b-92b5-4f4b-a4c2-63a9ce8cdd2d" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="25f5a329-3f9d-472d-99d0-847a7452439e" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="7adcbf06-2a0d-450d-9baf-80c1c28328de" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="5b6e92eb-3f3d-4ec1-a47a-73c6d51bb75e" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="25ac64cd-c06f-4c9e-b012-d73fd9737401" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="ab9ff912-4aae-4e13-a15a-708449fea3fe" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="feab9a1b-f6de-4808-9f18-0148f9ee7d53" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="c7bf0251-d3d5-4b81-b0e8-48813fd2e9d0" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="9ac807d9-9396-437d-829d-7b06bb79a9e8" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="0050efe9-80cf-4006-b0a7-722f6d25a647" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="aca0c46f-640e-49f8-8b97-c1b250cc46f1" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="DataPipeline" AttributeSetName="DataPipeline" EntityGUID="55375491-4af8-4053-a0c9-493ff3cc78eb" Json="True">
+      <Value Key="AllowEdit" Value="True" Type="Boolean" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="Query1" Type="String" />
+      <Value Key="Params" Value="ReplaceThis=27&#xA;ReplaceThisAsWell=[QueryString:Id]" Type="String" />
+      <Value Key="StreamsOut" Value="Default,Header,Table1" Type="String" />
+      <Value Key="StreamWiring" Value="d9e7b1c2-9888-4dc8-9d7f-96e65c46e9e0:Header&gt;Out:Header&#xD;&#xA;d9e7b1c2-9888-4dc8-9d7f-96e65c46e9e0:Default&gt;Out:Default&#xD;&#xA;78563a92-154d-4646-939f-84cd0dab2d37:Default&gt;0d47ecbf-d0ce-4a5f-b744-05c5fd4a7a24:Default&#xD;&#xA;0d47ecbf-d0ce-4a5f-b744-05c5fd4a7a24:Default&gt;Out:Table1" Type="String" />
+      <Value Key="TestParameters" Value="[Demo:Demo]=true" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="d9e7b1c2-9888-4dc8-9d7f-96e65c46e9e0" Json="True" KeyGuid="55375491-4af8-4053-a0c9-493ff3cc78eb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="CMS Block" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Sxc.DataSources.CmsBlock, ToSic.Sxc" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 400,&#xD;&#xA;  &quot;Left&quot;: 520&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="78563a92-154d-4646-939f-84cd0dab2d37" Json="True" KeyGuid="55375491-4af8-4053-a0c9-493ff3cc78eb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="App Root Cache" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.IAppRoot, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 440,&#xD;&#xA;  &quot;Left&quot;: 80&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="0d47ecbf-d0ce-4a5f-b744-05c5fd4a7a24" Json="True" KeyGuid="55375491-4af8-4053-a0c9-493ff3cc78eb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="Type-Filter" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.EntityTypeFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 300,&#xD;&#xA;  &quot;Left&quot;: 80&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.EntityTypeFilter" AttributeSetName="ToSic.Eav.DataSources.EntityTypeFilter" EntityGUID="601d5e59-b614-4405-acd4-7a277065eb08" Json="True" KeyGuid="0d47ecbf-d0ce-4a5f-b744-05c5fd4a7a24">
+      <Value Key="TypeName" Value="e0edcba7-bea6-4478-a474-9a547cbef3b7" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="e3097404-9b2c-4d6c-bcf1-b79439606d63" Json="True">
+      <Value Key="ContentTypeStaticName" Value="" Type="String" />
+      <Value Key="Icon" Value="" Type="Hyperlink" />
+      <Value Key="Identifier" Value="" Type="String" />
+      <Value Key="IsHidden" Value="False" Type="Boolean" />
+      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="Location" Value="Site" Type="String" />
+      <Value Key="Name" Value="Http" Type="String" />
+      <Value Key="Path" Value="_Http.cshtml" Type="String" />
+      <Value Key="PresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="PublishData" Value="False" Type="Boolean" />
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean" />
+      <Value Key="SearchIndexingStreams" Value="" Type="String" />
+      <Value Key="StreamsToPublish" Value="" Type="String" />
+      <Value Key="Type" Value="C# Razor" Type="String" />
+      <Value Key="UseForList" Value="False" Type="Boolean" />
+      <Value Key="ViewController" Value="" Type="String" />
+      <Value Key="ViewNameInUrl" Value="" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="2b5cc0c5-e627-4789-9014-f025cb71fae0" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="09d56979-0e71-416b-92d0-ed608bdf598e" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="a6dc2fcb-e531-4db2-b666-7414e534b0c3">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="2824a0b2-eff0-498b-bbf0-d2e501f32b31" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="c54c50d8-326e-4c26-83b6-4235f284a643">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="26e5a8a0-3840-4f73-94b0-c48f6b084166">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="53a3fecf-aacc-4367-a5c2-221c25e47da4">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="230ef5c8-ca35-4f51-b0db-f3d587320bab">
+      <Value Key="FirstName" Value="Fetch First" Type="String" />
+      <Value Key="LastName" Value="Fetch Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="a9ec056c-62ba-488c-94ea-a3084d431e47">
+      <Value Key="FirstName" Value="JQuery First" Type="String" />
+      <Value Key="LastName" Value="JQuery Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="73a533cd-879e-4d78-a9b0-68354fe0463a">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="2e0cc89c-5b00-4096-ad5a-800e62e59080">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="05e225c8-81f0-4caa-9959-c59e89f0747d">
+      <Value Key="FirstName" Value="Fetch First" Type="String" />
+      <Value Key="LastName" Value="Fetch Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="64d7bd48-93b7-4efa-84fd-4bbdfc12b371">
+      <Value Key="FirstName" Value="JQuery First" Type="String" />
+      <Value Key="LastName" Value="JQuery Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="72103a56-be97-48db-bbc7-6b5d3fc56fbe">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="569d40f7-4bcb-4604-ba4f-503d96718c80">
+      <Value Key="FirstName" Value="JQuery First" Type="String" />
+      <Value Key="LastName" Value="JQuery Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="ee89ed83-28de-4b48-936f-a33ec53f2c2f">
+      <Value Key="FirstName" Value="Fetch First" Type="String" />
+      <Value Key="LastName" Value="Fetch Last" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="e0edcba7-bea6-4478-a474-9a547cbef3b7" AttributeSetName="Table1" EntityGUID="bcb966be-2711-42a3-a378-0968e60c5d1e">
+      <Value Key="FirstName" Value="FirstName" Type="String" />
+      <Value Key="LastName" Value="LastName" Type="String" />
+    </Entity>
+  </Entities>
+  <PortalFiles />
+  <PortalFolders>
+    <Folder Id="11416" RelativePath="adam/WebApiTests/" />
+  </PortalFolders>
+</SexyContent>
